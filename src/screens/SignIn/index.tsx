@@ -5,7 +5,11 @@ import { Button } from 'react-native-paper';
 import { styles } from './styles';
 import GoogleIcon from '../../assets/google-login-icon-24.jpeg';
 
-export function SignIn() {
+type NavigationProp = {
+    navigation: any;
+}
+
+export function SignIn({ navigation }: NavigationProp) {
     return (
         <View style={styles.container}>
             <Button
@@ -18,7 +22,7 @@ export function SignIn() {
                     </View>
                 )} 
                 mode="contained" 
-                onPress={() => console.log('Pressed')}>
+                onPress={() => navigation.navigate('Home')}>
                 Sign In with Google
             </Button>
         </View>

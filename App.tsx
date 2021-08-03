@@ -4,8 +4,7 @@ import { AppRegistry } from 'react-native';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { expo } from './app.json';
 
-import { Home } from './src/screens/Home';
-import { SignIn } from './src/screens/SignIn';
+import { Routes } from './src/routes';
 
 const theme = {
   ...DefaultTheme,
@@ -19,7 +18,7 @@ const theme = {
 export default function App() {
   return (
     <PaperProvider theme={theme}>
-      <SignIn />
+      <Routes />
     </PaperProvider>
   );
 }
