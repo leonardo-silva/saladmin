@@ -9,6 +9,7 @@ npm-debug.*
 *.orig.*
 web-build/
 docprivate/
+src/config/googleAuth.ts
 
 # macOS
 .DS_Store

@@ -1,8 +1,9 @@
+import { registerRootComponent } from 'expo';
 import React from 'react';
 // React-native-paper settings
-import { AppRegistry } from 'react-native';
+//import { AppRegistry } from 'react-native';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-import { expo } from './app.json';
+//import { expo } from './app.json';
 
 import { Routes } from './src/routes';
 
@@ -23,4 +24,5 @@ export default function App() {
   );
 }
 
-AppRegistry.registerComponent(expo.name, () => App);
+//AppRegistry.registerComponent(expo.name, () => App);
+registerRootComponent(App);
