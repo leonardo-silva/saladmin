@@ -9,11 +9,11 @@ import { useAuth } from '../../hooks/auth';
 
 import { CLIENT_ID } from "../../config";
 
-type NavigationProp = {
-    navigation: any;
-}
+//type NavigationProp = {
+//    navigation: any;
+//}
 
-export function SignIn({ navigation }: NavigationProp) {
+export function SignIn() {
     const { user, signIn, loading } = useAuth();
 
     //console.log(user);
@@ -21,7 +21,7 @@ export function SignIn({ navigation }: NavigationProp) {
     async function handleSignIn() {
         try {
             await signIn();
-            if (user.token) navigation.navigate('Home');
+            //if (user.token) navigation.navigate('Home');
         } catch (error) {
             Alert.alert(error);
         }
