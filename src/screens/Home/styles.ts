@@ -7,7 +7,13 @@ export const styles = StyleSheet.create ({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    title: {
-        fontSize: 20
+    listItem: {
+        fontSize: 15,
+        marginVertical:10
+    },
+    itemSeparator: {
+        height: 1,
+        width: '100%',
+        backgroundColor: 'black'
     }
 }); 
