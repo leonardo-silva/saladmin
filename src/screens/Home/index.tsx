@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, TouchableHighlight } from "react-native";
 
 import { useAuth } from "../../hooks/auth";
 import { classroomApi } from "../../services/classroomApi";
@@ -14,7 +14,7 @@ async function listCourses(token: string) {
 
 type CourseData = {
 	name: string,
-	key: string
+	id: string
 }
 
 export function Home () {
@@ -28,14 +28,18 @@ export function Home () {
 				const data = await listCourses(user.token);
 				for (let i=0;i<data.length;i++) {
 					const list = JSON.parse(JSON.stringify(data[i]));
+					//if (i === 0)
+					//	console.log(list);
 					course.push({ 
 						name: list.name,
-						key: String(i)
+						id: list.id
 					});
 				}
 				setItems(course);
 			} catch (error) {
-				alert("Ocorreu um erro ao buscar os items " + error);
+				//console.log(error.response);
+				alert("Ocorreu um erro ao buscar os items " + error +
+					" - " + error.response.data.error.message);
 			}
 		}
 		getItems();
@@ -45,11 +49,20 @@ export function Home () {
         <View style={styles.container}>
             <FlatList
                 data={items}
-                renderItem={({ item }) => {
+				keyExtractor={course => course.id}
+                renderItem={({item}) => {
                     return (
-                        <Text style={styles.listItem}>
-                                {item.name}
-                        </Text>
+						<TouchableHighlight
+							activeOpacity={0.6}
+							underlayColor="#DDDDDD"
+							onPress={() => alert(`${item.id}`)}
+						>
+							<View>
+								<Text style={styles.listItem}>
+										{item.name}
+								</Text>
+							</View>
+						</TouchableHighlight>
                     );    
                 }}
                 ItemSeparatorComponent={() => {
